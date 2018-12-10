@@ -1073,7 +1073,7 @@ pre {
   list-style: none;
 }
 #article-toc .toc {
-  padding-left: 2em;
+  padding-left: 1em;
 }
 #article-toc .toc .toc-item .toc-link {
   display: block;
