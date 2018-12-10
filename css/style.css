@@ -426,6 +426,9 @@ pre {
   font-size: 1.5em;
   line-height: 1.35em;
   margin: 0;
+
+  font-family: inherit;
+  font-weight: 500;
 }
 .post .post-head .post-title a {
   color: #303030;
@@ -475,7 +478,8 @@ pre {
 }
 .post .post-content p.brief {
   overflow: hidden;
-  color: #666666;
+  color: #566573;
+  /*color: #666666;*/
 }
 .post .post-body {
   margin-top: 15px;
