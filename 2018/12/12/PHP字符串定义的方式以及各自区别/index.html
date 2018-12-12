@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="叶子的笔记本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="description" content="叶永镇的个人博客,也是叶永镇的笔记本,记录分享php相关开发经验.">
+
+
+
+<meta name="keywords" content="博客,个人博客,技术博客,PHP博客,php,linux,数据库,前端,笔记,叶子的笔记本">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>PHP字符串定义的方式以及各自区别 | 叶子的笔记本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="叶子的笔记本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="叶永镇">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 叶子的笔记本 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">叶子的笔记本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/PHP/"><i class="fa "></i>PHP</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DB/"><i class="fa "></i>DB</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Linux/"><i class="fa "></i>Linux</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/乱七八糟/"><i class="fa "></i>乱七八糟</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://github.com/yeyongzhen"><i class="fa "></i>Github</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="PHP字符串定义的方式以及各自区别">
+            
+	            PHP字符串定义的方式以及各自区别
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/PHP">
+            PHP
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/PHP,字符串" title="PHP,字符串">
+                        PHP,字符串
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018-12-12 9:59:33</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="一、定义方式"><a href="#一、定义方式" class="headerlink" title="一、定义方式"></a>一、定义方式</h2><ul>
+<li>单引号</li>
+<li>双引号</li>
+<li>Heredoc（类似于双引号）</li>
+<li>Newdoc（类似于单引号）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Heredoc</span><br><span class="line">$str = &apos;This is string&apos;;</span><br><span class="line">$str2 = &lt;&lt;&lt; &apos;Eod&apos;</span><br><span class="line">$str</span><br><span class="line">Eod;</span><br><span class="line"></span><br><span class="line">echo $str2;</span><br><span class="line">// 输出 This is string</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Newdoc</span><br><span class="line">$str = &apos;This is string&apos;;</span><br><span class="line"></span><br><span class="line">$str1 = &lt;&lt;&lt; Eod</span><br><span class="line">$str</span><br><span class="line">Eod;</span><br><span class="line"></span><br><span class="line">echo $str1;</span><br><span class="line">// 输出 This is string</span><br></pre></td></tr></table></figure>
+<h2 id="二、区别"><a href="#二、区别" class="headerlink" title="二、区别"></a>二、区别</h2><ol>
+<li>单引号不解析变量</li>
+<li>单引号不能解析转义字符，只能解析<code>单引号</code>和<code>反斜线</code></li>
+<li>变量和变量、变量和字符串、字符串和字符串之间可以用<code>.</code>来连接</li>
+<li>双引号可以解析变量，变量可以使用<code>特殊字符</code>和<code>{}</code>包含</li>
+<li>双引号可以解析<code>所有转义字符</code></li>
+<li>单引号效率高于双引号</li>
+<li>heredoc 类似于双引号，newdoc 类似于单引号，两者都用来<code>处理大文本</code></li>
+</ol>
+<h2 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$str = &apos;Learning&apos;; </span><br><span class="line">echo $str; </span><br><span class="line">// 输出 Learning</span><br><span class="line"></span><br><span class="line">$str2 = &quot;Learning&quot;; </span><br><span class="line">echo $str2; </span><br><span class="line">// 输出 Learning</span><br></pre></td></tr></table></figure>
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$str3 = &apos;Learning \r \n \t  \&apos; \\ PHP&apos;;</span><br><span class="line">echo $str3; </span><br><span class="line">// 输出 Learning \r \n \t &apos; \ PHP</span><br><span class="line"></span><br><span class="line">$str4 = &quot;Learning \r \n \t \&apos; \\ PHP&quot;;</span><br><span class="line">echo $str4; </span><br><span class="line">// 输出 Learning \&apos; \ PHP</span><br></pre></td></tr></table></figure>
+<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$str = &apos;Hello&apos;;</span><br><span class="line">echo $str.&apos;,world&apos;; // 输出 hello,world</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="解析变量"><a href="#解析变量" class="headerlink" title="解析变量"></a>解析变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$str5 = &apos;Learning&apos;;</span><br><span class="line"></span><br><span class="line">$str6 = &apos;$str5&apos;;</span><br><span class="line">echo $str6; // 输出 &apos;$str5&apos;</span><br><span class="line"></span><br><span class="line">$str7 = &quot;$str5&quot;;</span><br><span class="line">echo $str7; // 输出 Learning</span><br><span class="line"></span><br><span class="line">$str8 = &quot;&apos;$str5&apos;&quot;;</span><br><span class="line">echo $str8; // 输出 &apos;Learning&apos;</span><br><span class="line"></span><br><span class="line">$str9 = &quot;&#123;$str5&#125;&quot;;</span><br><span class="line">echo $str9; // 输出 Learning</span><br><span class="line"></span><br><span class="line">$str10 = &quot;&apos;$str5&apos;&quot;;</span><br><span class="line">echo $str10; // 输出 &apos;Learning&apos;</span><br><span class="line"></span><br><span class="line">$str11 = &quot;&apos;&#123;$str5&#125;&apos;&quot;;</span><br><span class="line">echo $str11; // 输出 &apos;Learning&apos;</span><br><span class="line"></span><br><span class="line">$str12 = &quot;&#123;&apos;$str5&apos;&#125;&quot;;</span><br><span class="line">echo $str12; // 输出 &#123;&apos;Learning&apos;&#125;</span><br><span class="line"></span><br><span class="line">$str13 = &apos;&quot;$str5&quot;&apos;;</span><br><span class="line">echo $str13; // 输出 &quot;$str5&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果双引号里面插入变量的时候，请在后面加上空格或者逗号，不然计算机会认为你是一体的或者用大括号包起来</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$name = &apos;张三&apos;;</span><br><span class="line"></span><br><span class="line">// 张三,好好学习天天向上</span><br><span class="line">echo &quot;$name,好好学习天天向上&quot;;	</span><br><span class="line"></span><br><span class="line">// 张三 好好学习</span><br><span class="line">echo &quot;$name 好好学习&quot;;</span><br><span class="line"></span><br><span class="line">// 张三天天向上</span><br><span class="line">echo &quot;&#123;$name&#125;天天向上&quot;;</span><br><span class="line"></span><br><span class="line">// &apos;张三&apos;好好学习</span><br><span class="line">echo &quot;&apos;$name&apos;好好学习&quot;;</span><br><span class="line"></span><br><span class="line">// 报错 Notice: Undefined variable: name好好学习</span><br><span class="line">echo &quot;$name好好学习&quot;;</span><br></pre></td></tr></table></figure>
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="../../../../img/reward_alipay.jpeg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../../../../img/reward_wepay.jpeg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://yeyongzhen.github.io/" target="_blank">叶子的笔记本</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/12/10/hello-world/" class="next-post btn btn-default" title="Hello HEXO">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Hello HEXO</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、定义方式"><span class="toc-number">1.</span> <span class="toc-text">一、定义方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、区别"><span class="toc-number">2.</span> <span class="toc-text">二、区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、实例"><span class="toc-number">3.</span> <span class="toc-text">三、实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#转义字符"><span class="toc-number">3.1.</span> <span class="toc-text">转义字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串拼接"><span class="toc-number">3.2.</span> <span class="toc-text">字符串拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析变量"><span class="toc-number">3.3.</span> <span class="toc-text">解析变量</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        访问量:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        访客数:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
